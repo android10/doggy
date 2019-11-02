@@ -3,8 +3,23 @@ use console::style;
 use std::io::*;
 use std::process::Command;
 
+mod usecases;
+
+use usecases::UseCase;
+
 fn main() {
-    print_main_menu();
+
+    usecases::_test_number();
+
+    // temporal
+    let test123 = usecases::use_cases();
+    println!("{}", test123.id());
+    println!("{}", test123.name());
+    println!("{}", test123.description());
+    println!("{}", test123.execute());
+    //
+
+    // print_main_menu();
     read_option(Term::stdout().read_line());
 }
 
