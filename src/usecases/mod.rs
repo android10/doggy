@@ -4,7 +4,7 @@ pub trait UseCase {
     fn execute(&self) -> Result<String>;
 }
 
-fn _test_number() -> i32 {
+pub fn _test_number() -> i32 {
     8
 }
 

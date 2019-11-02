@@ -3,8 +3,6 @@ use console::style;
 use std::io::*;
 use std::process::Command;
 
-mod usecases;
-
 fn main() {
     print_main_menu();
     read_option(Term::stdout().read_line());
