@@ -1,4 +1,5 @@
 use std::process::Command;
+use std::process::Output;
 
 use crate::usecases::UseCase;
 
@@ -23,7 +24,7 @@ impl UseCase for CheckPackmanCache {
         "description".to_string() 
     }
 
-    fn execute(&self) -> String {
+    fn execute(&self) -> Output {
         let output = Command::new("du")
                          .arg("-s")
                          .arg("-h")
@@ -31,12 +32,8 @@ impl UseCase for CheckPackmanCache {
                          .output()
                          .expect("failed to execute process");
 
-        println!("status: {}", output.status);
-        println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
-        println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
-
         assert!(output.status.success());
 
-        "done".to_string()
+        return output;
     }
 }

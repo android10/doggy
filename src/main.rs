@@ -1,7 +1,6 @@
 use console::Term;
 use console::style;
 use std::io::*;
-use std::process::Command;
 
 mod usecases;
 
@@ -13,7 +12,11 @@ fn main() {
     println!("{}", test123[0].id());
     println!("{}", test123[0].name());
     println!("{}", test123[0].description());
-    println!("{}", test123[0].execute());
+
+    let output = test123[0].execute();
+    println!("status: {}", output.status);
+    println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
+    println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
     //
 
     // print_main_menu();
@@ -39,23 +42,8 @@ fn read_option(result: Result<String>) {
 
 fn process_option(opt: &str) {
     match opt {
-        "1" => execute_command("du", "-sh /var/cache/pacman/pkg"),
-        "2" => execute_command("du", "-sh ~/.cache/pacaur/"),
+        "1" => println!("du -sh /var/cache/pacman/pkg"),
+        "2" => println!("du -sh ~/.cache/pacaur/"),
         _ => println!("Any other option pressed"),
     }
-}
-
-fn execute_command(_cmd: &str, _arg: &str) {
-    let output = Command::new("du")
-                         .arg("-s")
-                         .arg("-h")
-                         .arg("/var/cache/pacman/pkg")
-                         .output()
-                         .expect("failed to execute process");
-
-    println!("status: {}", output.status);
-    println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
-    println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
-
-    assert!(output.status.success());
 }

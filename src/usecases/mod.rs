@@ -1,3 +1,4 @@
+use std::process::Output;
 
 mod cache;
 
@@ -7,7 +8,7 @@ pub trait UseCase {
     fn id(&self) -> String;
     fn name(&self) -> String;
     fn description(&self) -> String;
-    fn execute(&self) -> String;
+    fn execute(&self) -> Output;
 }
 
 pub fn items() -> [impl UseCase; 1] {
