@@ -1,4 +1,3 @@
-use std::str;
 use std::process::Command;
 
 use crate::usecases::UseCase;
@@ -35,13 +34,3 @@ impl UseCase for CheckPackmanCache {
         "done".to_string()
     }
 }
-
-// #[cfg(test)]
-// mod tests {
-//     use super::_test_number; 
-
-//     #[test]
-//     fn test_greet() {
-//         assert_eq!(8, _test_number());
-//     }
-// }

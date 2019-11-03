@@ -1,7 +1,6 @@
 
 mod cache;
 
-// use cache::CheckPackmanCache;
 use cache::CheckPackmanCache;
 
 pub trait UseCase {
@@ -11,28 +10,20 @@ pub trait UseCase {
     fn execute(&self) -> String;
 }
 
-// pub fn use_cases() -> CheckPackmanCache impl UseCase {
-pub fn use_cases() -> impl UseCase {
-    // let ys: [i32; 500] = [0; 500];
-    // let xs: [i32; 5] = [1, 2, 3, 4, 5];
+pub fn items() -> [impl UseCase; 1] {
+    let usecases: [CheckPackmanCache; 1] = [
+        CheckPackmanCache {}
+    ]; 
 
-    // let usecases: [CheckPackmanCache; 1] = [
-    //     CheckPackmanCache {}
-    // ]; 
-
-    return CheckPackmanCache {};
+    return usecases;
 } 
-
-pub fn _test_number() -> i32 {
-    8
-}
 
 #[cfg(test)]
 mod tests {
-    use super::_test_number; 
+    use super::items; 
 
     #[test]
-    fn test_greet() {
-        assert_eq!(8, _test_number());
+    fn test_number_of_use_cases() {
+        assert_eq!(1, items().len());
     }
 }

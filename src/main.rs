@@ -8,15 +8,12 @@ mod usecases;
 use usecases::UseCase;
 
 fn main() {
-
-    usecases::_test_number();
-
     // temporal
-    let test123 = usecases::use_cases();
-    println!("{}", test123.id());
-    println!("{}", test123.name());
-    println!("{}", test123.description());
-    println!("{}", test123.execute());
+    let test123 = usecases::items();
+    println!("{}", test123[0].id());
+    println!("{}", test123[0].name());
+    println!("{}", test123[0].description());
+    println!("{}", test123[0].execute());
     //
 
     // print_main_menu();
