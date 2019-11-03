@@ -4,6 +4,12 @@ use crate::usecases::UseCase;
 
 pub struct CheckPackmanCache {}
 
+impl CheckPackmanCache {
+    pub fn new() -> CheckPackmanCache {
+        CheckPackmanCache {}
+    }
+}
+
 impl UseCase for CheckPackmanCache {
     fn id(&self) -> String { 
         "1".to_string()
